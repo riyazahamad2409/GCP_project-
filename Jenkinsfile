@@ -14,7 +14,9 @@ pipeline {
         }
 	stage("Build") {
             steps {
-                sh 'mvn clean install'
+              withMaven(maven: 'mvn') {
+              sh "mvn clean package"
+	        }
             }
         }
         stage("Build image") {
