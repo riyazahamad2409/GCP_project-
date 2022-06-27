@@ -12,7 +12,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/riyaz-ahamadm92/java-projects.git']]])
             }
         }
-		stage("Build") {
+	stage("Build") {
             steps {
                 sh 'mvn clean install'
             }
