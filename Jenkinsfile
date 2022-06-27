@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven_3.5.2' 
+    }
     environment {
         PROJECT_ID = 'mineral-hangar-354512'
         CLUSTER_NAME = 'cluster-1'
