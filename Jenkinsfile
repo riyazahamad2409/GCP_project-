@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven_3.5.2' 
+        maven 'Maven' 
     }
     environment {
         PROJECT_ID = 'mineral-hangar-354512'
