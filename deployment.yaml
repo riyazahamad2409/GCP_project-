@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+     app: myapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myapp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: riyazahamadm92/gcp-project:tagversion
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: myapp
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+  labels:
+   app: myapp
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  selector:
+    app: myapp
+  type: LoadBalancer
