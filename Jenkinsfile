@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("Checkout code") {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/riyaz-ahamadm92/java-projects.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_credentials', url: 'https://github.com/riyaz-ahamadm92/java-projects.git']]])
             }
         }
 	stage("Build") {
