@@ -20,6 +20,12 @@ pipeline {
                    sh "mvn clean package"
 	    }
         }
+	stage("Nexus push") {
+		steps {
+			nexusArtifactUploader artifacts: [[artifactId: 'jetty-maven-plugin', classifier: '', file: 'target/hello-world-war-1.0.1.war', type: 'WAR']], credentialsId: 'nexus-credentials', groupId: 'org.mortbay.jetty', nexusUrl: '34.125.152.152:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-hello-hosted', version: '1.0.2'
+		}
+	}
+		    
         stage("Build image") {
             steps {
                 script {
